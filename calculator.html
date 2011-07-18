@@ -1,0 +1,23 @@
+
+
+<!DOCTYPE HTML >
+<html >
+
+<head>
+	<title>CALCULATOR</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/mootools/1.3.2/mootools-yui-compressed.js"></script>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 0.18" />
+</head>
+
+<body>
+	<form name="calc">
+		<table>
+			<tr><td colspan="3" width="75%"><input name="wtcalc" type="text"></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value=''" value="C" name="C" title="C"></td></tr>
+			<tr><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='1'" value="1" name="1" title="1" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='2'" value="2" name="2" title="2" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='3'" value="3" name="3" title="3" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='+'" value="+" name="+" title="+" ></td></tr>
+			<tr><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='4'" value="4" name="4" title="4" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='5'" value="5" name="5" title="5" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='6'" value="6" name="6" title="6" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='-'" value="-" name="-" title="-" ></td></tr>
+			<tr><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='7'" value="7" name="7" title="7" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='8'" value="8" name="8" title="8" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='9'" value="9" name="9" title="9" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='*'" value="*" name="*" title="*" ></td></tr>
+			<tr><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='.'" value="." name="." title="." ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='0'" value="0" name="0" title="0" ></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value=eval(calc.wtcalc.value);" value="="></td><td width="25%"><input type="button" onClick="document.calc.wtcalc.value+='/'" value="/" name="/" title="/" ></td></tr>
+		</table>
+</form>
+</html>
