@@ -1,28 +1,29 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-# quitbutton.py
+# messagebox.py
 
 import sys
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui
 
 
-class Icon(QtGui.QWidget):
+class MessageBox(QtGui.QWidget):
+    quitbox = None
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
-        self.setGeometry(300, 300, 250, 150)
-        self.setWindowTitle('Icon')
-        self.setWindowIcon(QtGui.QIcon('Icons/img.png'))
+        self.setGeometry(600, 600, 500, 500)
+        self.setWindowTitle('message box')
+        self.quitbox = QtGui.QPushButton('Close', self) 
+        self.center()
+
+    def center(self):
+        screen = QtGui.QDesktopWidget().screenGeometry()
+        size =  self.quitbox.geometry()
+        self.quitbox.move((self.width()/2)-(self.quitbox.width()/2),(self.height()/2)-(self.quitbox.height()/2))
         
-        self.setGeometry(300, 300, 250, 150)
-        self.setWindowTitle('Quit button')
-
-        quit = QtGui.QPushButton('Close', self)
-        quit.setGeometry(84, 50, 60, 35)
-
-        self.connect(quit, QtCore.SIGNAL('clicked()'),
-            QtGui.qApp, QtCore.SLOT('quit()'))
        
+    def closeEvent(self, event):
         reply = QtGui.QMessageBox.question(self, 'Message',
             "Are you sure to quit?", QtGui.QMessageBox.Yes | 
             QtGui.QMessageBox.No, QtGui.QMessageBox.No)
@@ -31,17 +32,8 @@ class Icon(QtGui.QWidget):
             event.accept()
         else:
             event.ignore()
-            
-        screen = QtGui.QDesktopWidget().screenGeometry()
-        size =  self.geometry()
-        self.move((screen.width()-size.width())/2, (screen.height()-size.height())/2)
-        
-
 
 app = QtGui.QApplication(sys.argv)
-
-icon = Icon()
-icon.show()
+qb = MessageBox()
+qb.show()
 sys.exit(app.exec_())
-
-
