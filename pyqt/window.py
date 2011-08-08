@@ -1,46 +1,48 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-# icon.py
+# gridlayout1.py
 
 import sys
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui,QtCore
 
 
-
-
-class MainWindow(QtGui.QMainWindow):
+class Example(QtGui.QWidget):
+  
     def __init__(self):
-        QtGui.QMainWindow.__init__(self)
-
-   
-			
-
-        self.setGeometry(300, 300, 250, 150)
-        self.setWindowTitle('test')
-        self.setWindowIcon(QtGui.QIcon('Icons/img.png'))
-        self.resize(250,150)
-        self.center()
-
-    def center(self):
-        screen = QtGui.QDesktopWidget().screenGeometry()
-        size =  self.geometry()
-        self.move((screen.width()-self.width())/2, (screen.height()-self.height())/2)
+        super(Example, self).__init__()
         
-        quit = QtGui.QPushButton('Close', self)
-        quit.setGeometry(0, 0, 60, 35)
-        quitgeo = quit.geometry();
-        quit.move((size.width()/2) - (quitgeo.width()/2), (size.height()/2) - (quitgeo.height()/2))
-        self.connect(quit, QtCore.SIGNAL('clicked()'),
-            QtGui.qApp, QtCore.SLOT('quit()'))
-            
-        self.exit = QtGui.QAction(QtGui.QIcon('Icons/img.png'), 'Exit', self)
-        self.exit.setShortcut('Ctrl+Q')
-        self.connect(self.exit, QtCore.SIGNAL('triggered()'), QtCore.SLOT('close()'))
+        self.initUI()
+        
+    def initUI(self):
+		self.setGeometry(300, 300, 250, 150)
+		self.setWindowTitle('test')
+		self.setWindowIcon(QtGui.QIcon('Icons/img.png'))
+		self.resize(300,150)
+		#self.center()
+		#self.setWindowTitle('grid layout')
 
-        self.toolbar = self.addToolBar('Exit')
-        self.toolbar.addAction(self.exit)
+		names = ['Cls', 'Bck', '', 'Close', '7', '8', '9', '/',
+            '4', '5', '6', '*', '1', '2', '3', '-',
+            '0', '.', '=', '+']
 
+		grid = QtGui.QGridLayout()
 
+		j = 0
+		pos = [(0, 0), (0, 1), (0, 2), (0, 3),
+                (1, 0), (1, 1), (1, 2), (1, 3),
+                (2, 0), (2, 1), (2, 2), (2, 3),
+                (3, 0), (3, 1), (3, 2), (3, 3 ),
+                (4, 0), (4, 1), (4, 2), (4, 3)]
+
+		for i in names:
+			button = QtGui.QPushButton(i)
+			if j == 2:
+				grid.addWidget(QtGui.QLabel(''), 0, 2)
+			else: grid.addWidget(button, pos[j][0], pos[j][1])
+			j = j + 1
+
+		self.setLayout(grid)
     def closeEvent(self, event):
         reply = QtGui.QMessageBox.question(self, 'Message',
             "Are you sure to quit?", QtGui.QMessageBox.Yes | 
@@ -67,10 +69,7 @@ class MainWindow(QtGui.QMainWindow):
         file.addAction(exit)
 
 
-
-
-
 app = QtGui.QApplication(sys.argv)
-main = MainWindow()
-main.show()
+ex = Example()
+ex.show()
 sys.exit(app.exec_())
