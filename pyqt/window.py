@@ -46,8 +46,10 @@ class Calculator(QtGui.QWidget):
 
     def buttonClicked(self):
         sender = self.sender()
-        self.numbers.setText(sender.text() + sender.text())
+        hehe = self.numbers.text();
+        self.numbers.setText(hehe + sender.text())
         
+       if  add='+'
 
 app = QtGui.QApplication(sys.argv)
 ex = Calculator()
