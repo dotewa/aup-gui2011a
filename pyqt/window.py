@@ -44,12 +44,24 @@ class Calculator(QtGui.QWidget):
         
         self.setLayout(grid)
 
-    def buttonClicked(self):
-        sender = self.sender()
-        hehe = self.numbers.text();
-        self.numbers.setText(hehe + sender.text())
-        
-       if  add='+'
+	def buttonClicked(self):
+		sender = self.sender()
+		hehe = self.numbers.text();
+		if(sender.text() == '/'):
+				division = self.numbers.text()
+				self.numbers.setText(" ")
+		elif(sender.text() == '+' ):
+			Addition = self.numbers.text()
+			self.numbers.setText(" ")
+		elif(sender.text() == '-'):
+			minus = self.numbers.text()
+			self.numbers.setText(" ")
+		elif(sender.text() == '*'):
+			multiply = self.numbers.text()
+			self.numbers.setText(" ")			
+		else:
+			self.numbers.setText(hehe + sender.text())
+			
 
 app = QtGui.QApplication(sys.argv)
 ex = Calculator()
